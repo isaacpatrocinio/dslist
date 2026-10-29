@@ -11,9 +11,7 @@ public class DTOMapper {
 	}
 
 	public static GameDTO gameEntityToDTO(Game entity) {
-		return new GameDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getGenre(),
-				entity.getShortDescription(), entity.getLongDescription(), entity.getPlatforms(), entity.getScore(),
-				entity.getImgUrl());
+		return new GameDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getGenre(),entity.getShortDescription(), entity.getLongDescription(), entity.getPlatforms(), entity.getScore(), entity.getImgUrl());
 	}
 
 	public static GameListDTO gameListEntityToDTO(GameList entity) {
