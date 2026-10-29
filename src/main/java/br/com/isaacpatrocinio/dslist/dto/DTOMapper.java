@@ -4,7 +4,11 @@ import br.com.isaacpatrocinio.dslist.entities.Game;
 
 public class DTOMapper {
 
+	public static GameMinDTO gameEntityToMinDTO(Game entity) {
+		return new GameMinDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getShortDescription());
+	}
+	
 	public static GameDTO gameEntityToDTO(Game entity) {
-		return new GameDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getShortDescription());
+		return new GameDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getGenre(), entity.getShortDescription(), entity.getLongDescription(), entity.getPlatforms(), entity.getScore(), entity.getImgUrl());
 	}
 }
