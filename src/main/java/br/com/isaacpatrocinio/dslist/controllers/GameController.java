@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.isaacpatrocinio.dslist.dto.GameDTO;
 import br.com.isaacpatrocinio.dslist.dto.GameMinDTO;
+import br.com.isaacpatrocinio.dslist.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist.services.GameService;
 
 @RestController

@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.isaacpatrocinio.dslist.dto.DTOMapper;
 import br.com.isaacpatrocinio.dslist.dto.GameListDTO;
+import br.com.isaacpatrocinio.dslist.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist.repositories.GameListRepository;
+import br.com.isaacpatrocinio.dslist.repositories.GameRepository;
 
 @Service
 public class GameListService {
