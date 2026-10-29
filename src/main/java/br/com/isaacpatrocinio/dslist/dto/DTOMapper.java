@@ -1,6 +1,7 @@
 package br.com.isaacpatrocinio.dslist.dto;
 
 import br.com.isaacpatrocinio.dslist.entities.Game;
+import br.com.isaacpatrocinio.dslist.entities.GameList;
 
 public class DTOMapper {
 
@@ -10,5 +11,9 @@ public class DTOMapper {
 	
 	public static GameDTO gameEntityToDTO(Game entity) {
 		return new GameDTO(entity.getId(), entity.getTitle(), entity.getYear(), entity.getGenre(), entity.getShortDescription(), entity.getLongDescription(), entity.getPlatforms(), entity.getScore(), entity.getImgUrl());
+	}
+
+	public static GameListDTO gameListEntityToDTO(GameList entity) {
+		return new GameListDTO(entity.getId(), entity.getName());
 	}
 }
