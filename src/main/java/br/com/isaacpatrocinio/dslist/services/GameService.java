@@ -36,7 +36,8 @@ public class GameService {
 
 	public List<GameMinDTO> findAllGamesByListId(Long listId) {
 		var projList = gameRepository.findAllByListId(listId);
-		var minDtoList = projList.stream().map(x -> DTOMapper.gameMinProjectionToMinDTO(x)).toList();
+		var minDtoList = projList.stream()
+				.map(x -> DTOMapper.gameMinProjectionToMinDTO(x)).toList();
 		return minDtoList;
 	}
 }
