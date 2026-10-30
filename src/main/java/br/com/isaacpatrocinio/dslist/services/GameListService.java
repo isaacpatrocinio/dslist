@@ -15,9 +15,11 @@ import br.com.isaacpatrocinio.dslist.repositories.GameRepository;
 public class GameListService {
 
 	private GameListRepository gameListRepository;
+	private GameRepository gameRepository;
 
-	public GameListService(GameListRepository gameListRepository) {
+	public GameListService(GameListRepository gameListRepository, GameRepository gameRepository) {
 		this.gameListRepository = gameListRepository;
+		this.gameRepository = gameRepository;
 	}
 	
 	@Transactional(readOnly = true)
@@ -25,5 +27,20 @@ public class GameListService {
 		var list = gameListRepository.findAll();
 		var dtoList = list.stream().map(x -> DTOMapper.gameListEntityToDTO(x)).toList();
 		return dtoList;
+	}
+	
+	@Transactional
+	public void moveGame(Long listId, int sourceIndex, int destinationIndex) {
+		var list = gameRepository.findAllByListId(listId);
+
+		var targetGame = list.remove(sourceIndex);
+		list.add(destinationIndex, targetGame);
+		
+		var min = (sourceIndex < destinationIndex) ? sourceIndex : destinationIndex; 
+		var max = (sourceIndex > destinationIndex) ? sourceIndex : destinationIndex;
+		
+		for(int i = min; i <= max; i++) {
+			gameListRepository.moveGameOnList(listId, list.get(i).getId(), i);
+		}
 	}
 }

@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.isaacpatrocinio.dslist.dto.GameListDTO;
 import br.com.isaacpatrocinio.dslist.dto.GameMinDTO;
+import br.com.isaacpatrocinio.dslist.dto.ReplacementDTO;
 import br.com.isaacpatrocinio.dslist.services.GameListService;
 import br.com.isaacpatrocinio.dslist.services.GameService;
 
@@ -32,5 +35,10 @@ public class GameListController {
 	@GetMapping("/{listId}/games")
 	public List<GameMinDTO> findAllGamesByListId(@PathVariable Long listId) {
 		return gameService.findAllGamesByListId(listId);
+	}
+	
+	@PostMapping("/{listId}/move")
+	public void moveGameOnList(@PathVariable Long listId, @RequestBody ReplacementDTO dto) {
+		gameListService.moveGame(listId, dto.sourceIndex(), dto.destinationIndex());
 	}
 }
